@@ -203,7 +203,9 @@ where
     async fn use_password_auth(&mut self, methods: Vec<AuthenticationMethod>) -> Result<()> {
         info!("Password will be used");
         let (username, password) = match methods.get(1) {
-            Some(AuthenticationMethod::None) => unreachable!(),
+            Some(AuthenticationMethod::None) => Err(SocksError::AuthenticationRejected(format!(
+                "Authentication rejected, missing user pass"
+            ))),
             Some(AuthenticationMethod::Password {
                 ref username,
                 ref password,

@@ -222,8 +222,7 @@ impl ReplyError {
             consts::SOCKS5_REPLY_TTL_EXPIRED                => ReplyError::TtlExpired,
             consts::SOCKS5_REPLY_COMMAND_NOT_SUPPORTED      => ReplyError::CommandNotSupported,
             consts::SOCKS5_REPLY_ADDRESS_TYPE_NOT_SUPPORTED => ReplyError::AddressTypeNotSupported,
-//            _                                               => ReplyError::OtherReply(code),
-            _                                               => unreachable!("ReplyError code unsupported."),
+            _                                               => ReplyError::CommandNotSupported,
         }
     }
 }
